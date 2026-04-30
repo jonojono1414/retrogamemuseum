@@ -95,7 +95,7 @@ function setupHero() {
   loader.load('models/01_Famicom.glb', (gltf) => {
     heroModel = gltf.scene;
     const { center, maxDim } = fitModel(heroModel);
-    const scale = 3 / maxDim;
+    const scale = (window.innerWidth <= 640 ? 2.2 : 3) / maxDim;
     heroModel.scale.setScalar(scale);
     heroModel.position.sub(center.multiplyScalar(scale));
     heroModel.position.x = 2.2;
@@ -282,7 +282,7 @@ function openViewer(data) {
   loader.load(data.model, (gltf) => {
     const model = gltf.scene;
     const { center, maxDim } = fitModel(model);
-    const scale = 2.5 / maxDim;
+    const scale = (window.innerWidth <= 900 ? 1.8 : 2.5) / maxDim;
     model.scale.setScalar(scale);
     model.position.sub(center.multiplyScalar(scale));
     model.traverse(child => {

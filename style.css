@@ -494,7 +494,7 @@ footer {
 @media (max-width: 900px) {
   #viewer-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 55vh 1fr;
+    grid-template-rows: 65vh 1fr;
   }
 
   #viewer-info {
@@ -512,7 +512,7 @@ footer {
 @media (max-width: 640px) {
   #hero {
     align-items: flex-end;
-    padding-bottom: 12vh;
+    padding-bottom: 5vh;
   }
 
   .hero-content {
@@ -520,7 +520,7 @@ footer {
   }
 
   .hero-content h1 {
-    font-size: 3.2rem;
+    font-size: 2.4rem;
   }
 
   nav {
