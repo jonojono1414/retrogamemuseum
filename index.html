@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RETRO GAME MUSEUM — レトロゲーム機 3D アーカイブ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="site-header">
+    <a href="#" class="logo">
+      <span class="logo-icon">▶</span>
+      <span class="logo-text">RETRO GAME MUSEUM</span>
+    </a>
+    <nav>
+      <a href="#greeting">ご挨拶</a>
+      <a href="#collection">コレクション</a>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-tag">3D DIGITAL ARCHIVE</div>
+      <h1>RETRO<br>GAME<br>MUSEUM</h1>
+      <p class="hero-sub">レトロゲーム機の3Dデジタルアーカイブ</p>
+      <a href="#collection" class="hero-cta">コレクションを見る →</a>
+    </div>
+    <div class="hero-scroll">SCROLL ↓</div>
+  </section>
+
+  <main>
+    <section id="greeting" class="section">
+      <div class="section-inner">
+        <h2 class="section-title">ご挨拶</h2>
+        <div class="greeting-body">
+          <p>本ミュージアムは、かつて私たちを熱狂させたレトロゲーム機の数々を、最先端の3D技術でデジタルアーカイブしたサイトです。</p>
+          <p>ファミリーコンピュータ、ゲームボーイ、スーパーファミコン、プレイステーション——それぞれの時代を象徴するゲーム機たちを、360度あらゆる角度からご観覧ください。</p>
+          <p>実機では難しい細部の観察や、好きな角度からの鑑賞など、3Dならではの新しいゲーム機の愉しみ方を、ぜひご体験ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection" class="section">
+      <div class="section-inner">
+        <h2 class="section-title">コレクション</h2>
+        <p class="section-desc">ゲーム機をタップすると、3Dビューアーが表示されます。</p>
+        <div class="collection-grid" id="collection-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="viewer-overlay" class="hidden">
+    <div id="viewer-container">
+      <button id="viewer-close" aria-label="閉じる">✕</button>
+      <canvas id="viewer-canvas"></canvas>
+      <div id="viewer-info">
+        <div class="info-tag" id="info-tag"></div>
+        <h2 id="info-name"></h2>
+        <p id="info-name-en"></p>
+        <div class="info-meta">
+          <div class="meta-item">
+            <span class="meta-label">メーカー</span>
+            <span class="meta-value" id="info-maker"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">発売年</span>
+            <span class="meta-value" id="info-year"></span>
+          </div>
+        </div>
+        <p id="info-desc"></p>
+        <div class="viewer-hint">ドラッグで回転 / スクロールでズーム</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">▶ RETRO GAME MUSEUM</div>
+      <p class="footer-copy">3D Models created with Blender. Rendered with Three.js.</p>
+    </div>
+  </footer>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
