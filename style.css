@@ -205,19 +205,6 @@ nav a:hover {
   color: var(--accent);
 }
 
-/* ── Greeting ── */
-#greeting {
-  background: var(--surface);
-}
-
-.greeting-body p {
-  color: var(--text-dim);
-  margin-bottom: 1.2rem;
-  max-width: 700px;
-  font-size: 1rem;
-  line-height: 2;
-}
-
 /* ── Collection ── */
 .section-desc {
   color: var(--text-dim);
