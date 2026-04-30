@@ -107,6 +107,13 @@ function setupHero() {
     const h = canvas.clientHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
+    
+    if (w <= 640) {
+      camera.setViewOffset(w, h, 0, h * 0.18, w, h);
+    } else {
+      camera.clearViewOffset();
+    }
+    
     camera.updateProjectionMatrix();
   }
   resize();
@@ -259,10 +266,8 @@ function openViewer(data) {
   controls.maxDistance = 14;
 
   function resizeViewer() {
-    const infoPanel = document.getElementById('viewer-info');
-    const infoPanelWidth = window.innerWidth > 900 ? infoPanel.offsetWidth : 0;
-    const w = container.clientWidth - infoPanelWidth;
-    const h = container.clientHeight;
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
     if (w <= 0 || h <= 0) return;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
