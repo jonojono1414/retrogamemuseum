@@ -47,21 +47,39 @@
     <div id="viewer-container">
       <button id="viewer-close" aria-label="閉じる">✕</button>
       <canvas id="viewer-canvas"></canvas>
+
       <div id="viewer-info">
-        <div class="info-tag" id="info-tag"></div>
-        <h2 id="info-name"></h2>
-        <p id="info-name-en"></p>
-        <div class="info-meta">
-          <div class="meta-item">
-            <span class="meta-label">メーカー</span>
-            <span class="meta-value" id="info-maker"></span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">発売年</span>
-            <span class="meta-value" id="info-year"></span>
-          </div>
+        <!-- モバイル用ハンドル（常に表示） -->
+        <div class="info-handle">
+          <span class="info-handle-name" id="info-handle-name"></span>
+          <button class="info-toggle-btn" id="info-toggle-btn" aria-label="詳細を表示">
+            <span class="toggle-label">詳細</span>
+            <span class="toggle-arrow">▲</span>
+          </button>
         </div>
-        <p id="info-desc"></p>
+
+        <!-- スクロール可能なコンテンツ -->
+        <div class="info-scroll">
+          <div class="info-tag" id="info-tag"></div>
+          <h2 id="info-name"></h2>
+          <p id="info-name-en"></p>
+          <div class="info-meta">
+            <div class="meta-item">
+              <span class="meta-label">メーカー</span>
+              <span class="meta-value" id="info-maker"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">発売年</span>
+              <span class="meta-value" id="info-year"></span>
+            </div>
+          </div>
+          <p id="info-desc"></p>
+          <div class="trivia-section">
+            <div class="trivia-title">💡 豆知識</div>
+            <ul class="trivia-list" id="trivia-list"></ul>
+          </div>
+          <div class="viewer-hint">ドラッグで回転 / スクロールでズーム</div>
+        </div>
       </div>
     </div>
   </div>

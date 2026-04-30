@@ -386,14 +386,25 @@ nav a:hover {
   color: var(--accent2);
 }
 
+/* info-handle: デスクトップでは非表示 */
+.info-handle {
+  display: none;
+}
+
 #viewer-info {
-  padding: 2.5rem 2rem;
   background: var(--surface);
   border-left: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow: hidden;
+}
+
+.info-scroll {
+  padding: 2.5rem 2rem;
   overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   gap: 0;
 }
 
@@ -448,17 +459,47 @@ nav a:hover {
   color: var(--text-dim);
   font-size: 0.88rem;
   line-height: 1.9;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Trivia ── */
+.trivia-section {
+  margin-bottom: 1.5rem;
+}
+
+.trivia-title {
+  font-size: 0.82rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.trivia-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.trivia-item {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  padding: 0.7rem 0.9rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(0, 240, 255, 0.04);
 }
 
 .viewer-hint {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: var(--text-dim);
   border: 1px dashed var(--border);
   padding: 0.7rem;
   text-align: center;
+  margin-top: auto;
 }
 
 /* ── Footer ── */
@@ -492,20 +533,95 @@ footer {
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  /* ビューアー: キャンバスが全画面、情報パネルがボトムシートとして重なる */
   #viewer-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 65vh 1fr;
+    grid-template-rows: 1fr;
+    position: relative;
   }
 
+  #viewer-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* ボトムシート */
   #viewer-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-left: none;
     border-top: 1px solid var(--border);
-    justify-content: flex-start;
-    padding: 1.5rem;
+    max-height: 58px;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+  }
+
+  #viewer-info.info-expanded {
+    max-height: 62vh;
+  }
+
+  /* ハンドル: モバイルで表示 */
+  .info-handle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.2rem;
+    height: 58px;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .info-handle-name {
+    font-family: var(--font-header);
+    font-size: 0.9rem;
+    color: #fff;
+    text-shadow: 0 0 8px var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    margin-right: 1rem;
+  }
+
+  .info-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.2s;
+  }
+
+  .toggle-arrow {
+    display: inline-block;
+    transition: transform 0.35s ease;
+  }
+
+  #viewer-info.info-expanded .toggle-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* スクロールエリア */
+  .info-scroll {
+    padding: 1.2rem 1.5rem 1.5rem;
+    max-height: calc(62vh - 58px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   #info-name {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 }
 
