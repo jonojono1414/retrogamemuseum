@@ -5,16 +5,17 @@
 }
 
 :root {
-  --bg: #07070f;
-  --surface: #0d0d1c;
-  --surface2: #11112a;
-  --text: #d0d0f0;
-  --text-dim: #7878a8;
-  --accent: #7c6cf0;
-  --accent2: #ff4060;
-  --border: rgba(124, 108, 240, 0.18);
-  --glow: rgba(124, 108, 240, 0.35);
-  --font-mono: 'Courier New', monospace;
+  --bg: #050214;
+  --surface: #0a0429;
+  --surface2: #140847;
+  --text: #e0d8ff;
+  --text-dim: #8b7ad6;
+  --accent: #00f0ff;
+  --accent2: #ff0055;
+  --border: rgba(0, 240, 255, 0.3);
+  --glow: rgba(255, 0, 85, 0.6);
+  --font-mono: 'Press Start 2P', 'Courier New', monospace;
+  --font-header: 'Orbitron', sans-serif;
 }
 
 html {
@@ -27,6 +28,24 @@ body {
   font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.15) 50%,
+    rgba(0,0,0,0.15)
+  );
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 /* ── Header ── */
@@ -65,10 +84,11 @@ body {
 }
 
 .logo-text {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: bold;
-  letter-spacing: 0.18em;
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px var(--accent);
 }
 
 nav {
@@ -116,23 +136,25 @@ nav a:hover {
 .hero-tag {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  font-size: 0.6rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
   color: var(--accent);
   border: 1px solid var(--accent);
-  padding: 0.3rem 0.9rem;
+  padding: 0.4rem 0.8rem;
   margin-bottom: 1.5rem;
   pointer-events: none;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.4);
 }
 
 .hero-content h1 {
-  font-family: var(--font-mono);
+  font-family: var(--font-header);
   font-size: clamp(3.5rem, 9vw, 7.5rem);
   font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: 0.05em;
   color: #fff;
-  text-shadow: 0 0 80px rgba(124, 108, 240, 0.45);
+  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 40px var(--accent2), 0 0 80px var(--accent2);
   margin-bottom: 1.5rem;
 }
 
@@ -146,19 +168,24 @@ nav a:hover {
 .hero-cta {
   display: inline-block;
   padding: 0.85rem 2.2rem;
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  border: 2px solid var(--accent2);
+  color: var(--accent2);
   text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   pointer-events: auto;
   transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.4), inset 0 0 15px rgba(255, 0, 85, 0.4);
+  text-shadow: 0 0 8px var(--accent2);
 }
 
 .hero-cta:hover {
   background: var(--accent2);
-  box-shadow: 0 0 40px rgba(255, 64, 96, 0.5);
+  color: #fff;
+  box-shadow: 0 0 40px rgba(255, 0, 85, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.5);
+  text-shadow: none;
 }
 
 .hero-scroll {
@@ -191,13 +218,14 @@ nav a:hover {
 }
 
 .section-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-header);
   font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #fff;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
+  text-shadow: 0 0 10px var(--accent);
 }
 
 .section-title::before {
@@ -267,17 +295,19 @@ nav a:hover {
 
 .card-year {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
   color: var(--accent);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
 .card-name {
-  font-size: 1.05rem;
-  font-weight: bold;
+  font-family: var(--font-header);
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #fff;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .card-maker {
@@ -376,11 +406,13 @@ nav a:hover {
 }
 
 #info-name {
+  font-family: var(--font-header);
   font-size: 1.75rem;
-  font-weight: bold;
+  font-weight: 900;
   color: #fff;
   line-height: 1.25;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px var(--accent);
 }
 
 #info-name-en {

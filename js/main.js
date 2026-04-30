@@ -52,17 +52,17 @@ function fitModel(model) {
 }
 
 function buildLighting(scene, { key = 3, fill = 1.2, rim = 0.6, ambient = 0.5 } = {}) {
-  scene.add(new THREE.AmbientLight(0x8888cc, ambient));
+  scene.add(new THREE.AmbientLight(0x2a1b54, ambient));
 
   const keyLight = new THREE.DirectionalLight(0xffffff, key);
   keyLight.position.set(5, 8, 6);
   scene.add(keyLight);
 
-  const fillLight = new THREE.DirectionalLight(0x7c6cf0, fill);
+  const fillLight = new THREE.DirectionalLight(0x00f0ff, fill);
   fillLight.position.set(-4, 2, -4);
   scene.add(fillLight);
 
-  const rimLight = new THREE.DirectionalLight(0xff4060, rim);
+  const rimLight = new THREE.DirectionalLight(0xff0055, rim);
   rimLight.position.set(0, -3, -8);
   scene.add(rimLight);
 }
@@ -77,15 +77,15 @@ function setupHero() {
   renderer.toneMappingExposure = 1.1;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x07070f);
-  scene.fog = new THREE.FogExp2(0x07070f, 0.045);
+  scene.background = new THREE.Color(0x050214);
+  scene.fog = new THREE.FogExp2(0x050214, 0.045);
 
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   camera.position.set(0, 0.8, 5);
 
   buildLighting(scene, { key: 2.5, fill: 1, rim: 0.5, ambient: 0.4 });
 
-  const grid = new THREE.GridHelper(40, 40, 0x7c6cf0, 0x16163a);
+  const grid = new THREE.GridHelper(40, 40, 0x00f0ff, 0x140847);
   grid.position.y = -2;
   scene.add(grid);
 
@@ -157,7 +157,7 @@ function setupCard(data, index) {
   renderer.toneMappingExposure = 1.3;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x090916);
+  scene.background = new THREE.Color(0x0a0429);
 
   const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.1, 100);
   camera.position.set(0, 0.5, 4);
@@ -238,12 +238,12 @@ function openViewer(data) {
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x07070f);
-  scene.fog = new THREE.FogExp2(0x07070f, 0.035);
+  scene.background = new THREE.Color(0x050214);
+  scene.fog = new THREE.FogExp2(0x050214, 0.035);
 
   buildLighting(scene, { key: 3, fill: 1.5, rim: 0.8, ambient: 0.5 });
 
-  const grid = new THREE.GridHelper(30, 30, 0x7c6cf0, 0x16163a);
+  const grid = new THREE.GridHelper(30, 30, 0x00f0ff, 0x140847);
   grid.position.y = -2.5;
   scene.add(grid);
 
